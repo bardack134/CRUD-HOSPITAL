@@ -1,0 +1,15 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .fondo {
+    background-image: url(../img/hospital.jpg);
+    height: 100vh;
+    margin: 0; /* Añade margen cero */
+    padding: 0; /* Añade relleno cero */
+    background-size: cover;
+    background-position: center;
+  }
+  

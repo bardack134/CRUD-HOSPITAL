@@ -9,27 +9,28 @@
 {% load crispy_forms_tags %}
 
 <!-- Estos bloques delimitan el contenido específico de esta plantilla que será renderizado dentro del bloque content de la plantilla base. -->
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+  <div class="card bg-light" style="width: 25rem;">
+    <div class="card-body p-3 mx-3">
 
-{% block content %} 
+      <!-- Creamos un formulario de inicio de sesión -->
+      <form method="post" style="color: rgb(0, 0, 0);">
 
-  <!-- Creamos un formulario de inicio de sesión -->
-  <form method="post" style="color: rgb(0, 0, 0);">
-    
-  <!-- Agregamos el token CSRF para protección contra ataques CSRF -->
-{% csrf_token %} 
-    
-    <div style="width: 40%; margin:auto">
+        <!-- Agregamos el token CSRF para protección contra ataques CSRF -->
+        {% csrf_token %}
 
-      <!-- Usamos Crispy Forms para dar estilo al formulario -->
+        <div style="width: 100%; margin:auto;">
 
-      {{ form|crispy }}
-      
-      <!-- Agregamos un botón para enviar el formulario -->
-      <button type="submit" class="btn btn-success">Iniciar sesión</button>
+          <!-- Usamos Crispy Forms para dar estilo al formulario -->
+          {{ form|crispy }}
+
+          <!-- Agregamos un botón para enviar el formulario -->
+          <button type="submit" class="btn btn-success">Iniciar sesión</button>
+        </div>
+      </form>
     </div>
-  </form>
-
-  <!-- Finaliza el bloque de contenido -->
-  {% endblock %}
-
+  </div>
+</div>
+{% endblock %}
 
