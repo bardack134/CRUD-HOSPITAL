@@ -1,0 +1,56 @@
+{% extends "registro/base.html" %}
+
+<!-- Contenido que puede cambiar según la página -->
+{% block content %} 
+
+<!-- Cargamos las etiquetas estáticas para poder acceder a los archivos estáticos (como CSS y JavaScript). -->
+{% load static %}
+
+<!-- Cargamos el paquete de etiquetas de Crispy Forms para dar estilo al formulario -->
+{% load crispy_forms_tags %}
+
+
+
+{% for message in messages %}  <!-- Comenzamos un bucle para iterar a través de los mensajes. -->
+    {% if message.tags == 'success' %}  <!-- Verificamos si la etiqueta del mensaje es 'success'. -->
+        <div class="alert alert-{{ message.tags }} alert-dismissible">
+            <!-- Si el mensaje es de éxito, creamos una alerta con la clase 'alert-success'. -->
+            {{ message }}  <!-- Mostramos el contenido del mensaje. -->
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                <!-- Agregamos un botón para cerrar la alerta. -->
+            </button>
+        </div>
+    {% endif %}
+{% endfor %}
+
+
+
+<div style="float: right;"> <!-- Utilizamos la clase text-right para alinear el contenido a la derecha -->
+    <p>Para ver en cualquiera de los siguientes idiomas, por favor haz clic sobre el idioma: <br>
+        <a href="{% url 'RegistroPaciente' %}" class="link">Español</a>
+        <a href="{% url 'RegisterPatient' %}" class="link">English</a>
+        <a href="{% url 'RegistroPacienteJP' %}" class="link">Japanese</a>
+    </p>
+</div>
+
+<div >
+    <!-- Enlaces para cambiar el idioma -->
+    <p>Click aqui para ver los datos guardados<br>
+        <a href="{% url 'lista_pacientes'  %}" class="btn btn-success" style="margin: auto;">ver datos</a>
+    </p>
+</div>
+
+<div style="clear: both; margin-top: 20px;"> <!-- Agrega margen superior al div del formulario y usa clear: both para separar del div flotante -->
+    
+    <form method="post" style="color: rgb(9, 9, 9); width: 40%; margin:auto;">
+        {% csrf_token %}  <!-- Agregamos el token CSRF para protección contra ataques CSRF -->
+        
+        {{ formSP|crispy }}
+        
+        <!-- Botón de envío del formulario -->
+        <button type="submit" class="btn btn-success">Registrar</button>
+    </form>
+</div>
+
+{% endblock %}

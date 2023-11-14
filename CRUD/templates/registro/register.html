@@ -1,0 +1,58 @@
+<!-- Extiende la plantilla "base.html" -->
+{% extends "registro/base.html" %}
+
+<!-- Define un bloque llamado "content" que puede ser sobrescrito en plantillas hijas -->
+{% block content %} 
+
+<!-- Cargamos las etiquetas estáticas para acceder a archivos estáticos como CSS y JavaScript -->
+{% load static %}
+
+<!-- Cargamos el paquete de etiquetas de Crispy Forms para dar estilo al formulario -->
+{% load crispy_forms_tags %}
+
+<!-- Itera a través de los mensajes almacenados en "messages" y muestra alertas -->
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible">
+    {{ message }}
+    <!-- Botón para cerrar la alerta -->
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+<!-- Div para alinear el contenido a la derecha -->
+<div style="float: right;">
+    <!-- Enlaces para cambiar el idioma -->
+    <p>To view in any of the following languages, please click on the language:<br>
+        <a href="{% url 'RegistroPaciente' %}" class="link">Spanish</a>
+        <a href="{% url 'RegisterPatient' %}" class="link">English</a>
+        <a href="{% url 'RegistroPacienteJP' %}" class="link">Japanese</a>
+    </p>
+</div>
+<!-- Div para alinear el contenido a la derecha -->
+<div >
+    <!-- Enlaces para cambiar el idioma -->
+    <p>Click here to view the saved data<br>
+        <a href="{% url 'patient_list'  %}" class="btn btn-success" style="margin: auto;">view save data</a>
+    </p>
+</div>
+
+
+<!-- Div para agregar margen superior y separar del div flotante anterior -->
+<div style="clear: both; margin-top: 20px;">
+    <!-- Formulario con método POST y token CSRF para protección -->
+    <form method="post" style="color: rgb(9, 9, 9);">
+        {% csrf_token %} <!-- Agregamos el token CSRF para protección contra ataques CSRF -->
+        
+        <!-- Div para establecer el ancho y centrar el formulario -->
+        <div style="width: 40%; margin:auto">
+            {{ form|crispy }} <!-- Muestra el formulario con estilo Crispy Forms -->
+            
+            <!-- Botón para enviar el formulario -->
+            <button type="submit" class="btn btn-success">Register</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

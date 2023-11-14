@@ -1,0 +1,53 @@
+{% extends "registro/base.html" %}
+
+<!-- Contenido que puede cambiar según la página -->
+{% block content %} 
+
+<!-- Cargamos las etiquetas estáticas para poder acceder a los archivos estáticos (como CSS y JavaScript). -->
+{% load static %}
+
+<!-- Cargamos el paquete de etiquetas de Crispy Forms para dar estilo al formulario -->
+{% load crispy_forms_tags %}
+
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endfor %}
+
+<div style="float: right;"> <!-- Utilizamos la clase text-right para alinear el contenido a la derecha -->
+    <p>以下の言語で表示するには、言語をクリックしてください：<br>
+        <a href="{% url 'RegistroPaciente' %}" class="link">Spanish</a>
+        <a href="{% url 'RegisterPatient' %}" class="link">English</a>
+        <a href="{% url 'RegistroPacienteJP' %}" class="link">Japanese</a>
+    </p>
+</div>
+
+<div >
+    <!-- Enlaces para cambiar el idioma -->
+    <p>保存データを表示するにはこちらをクリックしてください<br>
+        <a href="{% url 'patient_listJP'  %}" class="btn btn-success" style="margin: auto;">データを表示</a>
+    </p>
+</div>
+
+
+<div style="clear: both; margin-top: 20px;"> <!-- Agrega margen superior al div del formulario y usa clear: both para separar del div flotante -->
+<form method="post" style="color: rgb(9, 9, 9);">
+    
+    {% csrf_token %}  <!-- Agregamos el token CSRF para protección contra ataques CSRF -->
+    
+    <div style="width: 40%; margin:auto">
+        
+        {{ formJP|crispy }}
+
+        
+        <!-- Botón de envío del formulario -->
+        <button type="submit" class="btn btn-success">登録</button>
+    </div>
+</form>
+</div>
+
+{% endblock %}
