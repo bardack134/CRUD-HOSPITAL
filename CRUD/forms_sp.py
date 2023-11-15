@@ -5,6 +5,7 @@ from .modelsSP import PatientInformationSP
 
 # Definición de la clase del formulario para 'PatientInformation'
 class PatientInformationFormSP(forms.ModelForm):
+    
     # Cambia los nombres de los campos en el formulario
     category_registration = forms.CharField(label="Categoría de registro", max_length=100)
     """

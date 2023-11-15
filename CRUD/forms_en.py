@@ -1,4 +1,5 @@
 from django import forms  # Importamos el módulo 'forms' de Django
+
 from .models import PatientInformation  # Importamos el modelo 'PatientInformation' desde el archivo 'models.py' en la misma carpeta
 
 # Definición de la clase del formulario para 'PatientInformation'

@@ -9,7 +9,7 @@ from django.views.generic import View
 from django.contrib.auth import login, logout, authenticate
 
 
-# Importamos el módulo para manejar mensajes
+# Importamos el módulo para manejar mensajes<
 from django.contrib import messages
 # Create your views here.
 
@@ -18,7 +18,7 @@ def cerrar_sesion(request):
     logout(request)
 
     # Redirigimos al usuario a la página de inicio ('home' es el nombre de la URL).
-    return redirect('RegistroPaciente')
+    return redirect('login')
 
 
 #página de inicio de sesión
@@ -63,7 +63,7 @@ class LoginView(View):
         # Verificamos si el formulario es válido
         if form.is_valid():  
 
-            # Obtenemos el nombre de usuario del formulario
+            
 
             # En Django, después de que los datos ingresados por el usuario se someten al proceso de validación, se almacenan en el atributo cleaned_data, cleaned_data es un diccionario y usamos el metodo get() para obtener el valor del campo username
             nombre_usuario = form.cleaned_data.get("username")  
