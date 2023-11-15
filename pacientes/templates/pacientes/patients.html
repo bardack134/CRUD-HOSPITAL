@@ -1,70 +1,74 @@
 {% extends "registro/base.html" %}
 
 <!-- Contenido que puede cambiar según la página -->
-{% block content %} 
+{% block content %}
 
 <!-- Cargamos las etiquetas estáticas para poder acceder a los archivos estáticos (como CSS y JavaScript). -->
 {% load static %}
 
 <div style="text-align: center;">
 
-    <h1>Patients </h1>
+    <h1 style="color: white;">Patients </h1>
 </div>
 
- <!-- Abre el formulario. Cuando se envía, los datos se envían como parte de la URL mediante el método GET. -->
-<form method="GET" action="{% url 'patient_list' %}">
+<!-- Abre el formulario. Cuando se envía, los datos se envían como parte de la URL mediante el método GET. -->
+<div class="m-2 p-2">
 
-    <!-- Crea un campo de entrada de tipo "date" para ingresar la fecha de búsqueda. -->
-    <input type="date" name="search_date">
 
-    <!-- Crea un campo de entrada de texto para ingresar el nombre del paciente. -->
-    <input type="text" name="search_name" placeholder="Patient's Name">
+    <form method="GET" action="{% url 'patient_list' %}">
 
-    <!-- Crea un botón de tipo "submit" que permite enviar el formulario. -->
-    <button type="submit">Search</button>
+        <!-- Crea un campo de entrada de tipo "date" para ingresar la fecha de búsqueda. -->
+        <input type="date" name="search_date">
 
-    <!-- ver todos los datos almacenados -->
-    <a href="{% url 'patient_list' %}" class="btn btn-secondary">View All</a>
+        <!-- Crea un campo de entrada de texto para ingresar el nombre del paciente. -->
+        <input type="text" name="search_name" placeholder="Patient's Name">
 
-    <a href="{% url 'RegisterPatient'  %}" class="btn btn-success" style="float: right;">Back to the registration form</a>
-</form>
+        <!-- Crea un botón de tipo "submit" que permite enviar el formulario. -->
+        <button type="submit">Search</button>
 
-<div class="table-responsive" style="clear: both; margin-top: 20px;">
+        <!-- ver todos los datos almacenados -->
+        <a href="{% url 'patient_list' %}" class="btn btn-secondary">View All</a>
+
+        <a href="{% url 'RegisterPatient'  %}" class="btn btn-success" style="float: right;">Back to the registration
+            form</a>
+    </form>
+</div>
+<div class="table-responsive p-3 " >
 
     <table class="table table-striped table-bordered table-sm align-middle">
         <thead>
-            <tr class="table-info">
-            <th>Registration category</th>
-            <th>Date and time</th>
-            <th>Hospital ward</th>
-            <th>Room</th>
-            <th>Patient code</th>
-            <th>Name</th>
-            <th>Gender</th>
-            <th>Admitting department</th>
-            <th>Outcome</th>
-            <th>Attending physician</th>
-            <th>Diagnosis</th>
-        </tr>
-    </thead>
-    <tbody class="table-group-divider">
-        {% for patient in patients %}
-        <tr>
-            <td>{{ patient.category_registration }}</td>
-            <td>{{ patient.date }}</td>
-            <td>{{ patient.hospital_ward }}</td>
-            <td>{{ patient.room }}</td>
-            <td>{{ patient.patient_code }}</td>
-            <td>{{ patient.name }}</td>
-            <td>{{ patient.get_gender_display }}</td>
-            <td>{{ patient.admitting_department }}</td>
-            <td>{{ patient.outcome }}</td>
-            <td>{{ patient.admitting_physician }}</td>
-            <td>{{ patient.diagnosis }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+            <tr class="table-info flex-wrap  align-items-center ">
+                <th class="align-middle text-center">Registration category</th>
+                <th class="align-middle text-center">Date and time</th>
+                <th class="align-middle text-center">Hospital ward</th>
+                <th class="align-middle text-center">Room</th>
+                <th class="align-middle text-center">Patient code</th>
+                <th class="align-middle text-center">Name</th>
+                <th class="align-middle text-center">Gender</th>
+                <th class="align-middle text-center">Admitting department</th>
+                <th class="align-middle text-center">Outcome</th>
+                <th class="align-middle text-center">Attending physician</th>
+                <th class="align-middle text-center">Diagnosis</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for patient in patients %}
+            <tr>
+                <td>{{ patient.category_registration }}</td>
+                <td>{{ patient.date }}</td>
+                <td>{{ patient.hospital_ward }}</td>
+                <td>{{ patient.room }}</td>
+                <td>{{ patient.patient_code }}</td>
+                <td>{{ patient.name }}</td>
+                <td>{{ patient.get_gender_display }}</td>
+                <td>{{ patient.admitting_department }}</td>
+                <td>{{ patient.outcome }}</td>
+                <td>{{ patient.admitting_physician }}</td>
+                <td>{{ patient.diagnosis }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 </div>
 
