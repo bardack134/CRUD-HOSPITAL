@@ -18,27 +18,28 @@
 
 
 
-  <div class="  fondo ">
-
-    
+  <!-- <div class="  fondo "> -->
 
 
-      <div style="color: rgb(7, 7, 7); text-align: right; margin-right: 120px;">
-        {% if user.is_authenticated %}
-        Welcome <br>{{ user.username}} <br>
-        <a href="{% url 'cerrar_sesion' %}" style="color: rgb(5, 5, 5);">Logout</a>
-        {% else %}
-        <!-- Mostrar enlaces de inicio de sesión y registro si el usuario no está autenticado -->
-        <a href="{% url 'login' %}" style="color: rgb(10, 10, 10);">Login</a> <br>
 
-        {% endif %}
-      </div>
-    
 
-    <!-- Contenido que puede cambiar según la página -->
-    {% block content %}
-    {% endblock %}
+  <div class="p-1 " style="color: rgb(255, 254, 254); text-align: right; margin-right: 100px;">
+    {% if user.is_authenticated %}
+    <span >Welcome <br><span style="color: yellow;">{{ user.username}} <br> </span>
+     
+    <a href="{% url 'cerrar_sesion' %}" style="color: rgb(240, 239, 239);">Logout</a>
+    {% else %}
+    <!-- Mostrar enlaces de inicio de sesión y registro si el usuario no está autenticado -->
+    <a href="{% url 'login' %}" style="color: rgb(255, 255, 255);">Login</a> <br>
+
+    {% endif %}
   </div>
+
+
+  <!-- Contenido que puede cambiar según la página -->
+  {% block content %}
+  {% endblock %}
+  <!-- </div> -->
 </body>
 
 </html>

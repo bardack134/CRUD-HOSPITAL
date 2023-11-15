@@ -2,6 +2,8 @@
 
 <!-- Contenido que puede cambiar según la página -->
 {% block content %} 
+<div class="fondo2">
+
 
 <!-- Cargamos las etiquetas estáticas para poder acceder a los archivos estáticos (como CSS y JavaScript). -->
 {% load static %}
@@ -26,7 +28,7 @@
 
 
 
-<div style="float: right;"> <!-- Utilizamos la clase text-right para alinear el contenido a la derecha -->
+<div class="px-3" style="float: right;"> <!-- Utilizamos la clase text-right para alinear el contenido a la derecha -->
     <p>Para ver en cualquiera de los siguientes idiomas, por favor haz clic sobre el idioma: <br>
         <a href="{% url 'RegistroPaciente' %}" class="link">Español</a>
         <a href="{% url 'RegisterPatient' %}" class="link">English</a>
@@ -34,14 +36,14 @@
     </p>
 </div>
 
-<div >
+<div class="px-3 mb-1 pb-1">
     <!-- Enlaces para cambiar el idioma -->
     <p>Click aqui para ver los datos guardados<br>
         <a href="{% url 'lista_pacientes'  %}" class="btn btn-success" style="margin: auto;">ver datos</a>
     </p>
 </div>
 
-<div style="clear: both; margin-top: 20px;"> <!-- Agrega margen superior al div del formulario y usa clear: both para separar del div flotante -->
+<div class=" mb-4 pb-4"> <!-- Agrega margen superior al div del formulario y usa clear: both para separar del div flotante -->
     
     <form method="post" style="color: rgb(9, 9, 9); width: 40%; margin:auto;">
         {% csrf_token %}  <!-- Agregamos el token CSRF para protección contra ataques CSRF -->
@@ -52,5 +54,5 @@
         <button type="submit" class="btn btn-success">Registrar</button>
     </form>
 </div>
-
+</div>
 {% endblock %}
