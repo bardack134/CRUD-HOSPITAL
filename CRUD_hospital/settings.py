@@ -89,17 +89,27 @@ DATABASES = {
 }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'hospital_datos',  # Coloca el nombre de la base de datos entre comillas
+#         'USER': 'postgres',
+#         'PASSWORD': '1234',  # Asegúrate de tener comas (,) después de cada elemento
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432'  # Cambia 'DATABASE_PORT' a 'PORT'
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hospital_datos',  # Coloca el nombre de la base de datos entre comillas
-        'USER': 'postgres',
-        'PASSWORD': '1234',  # Asegúrate de tener comas (,) después de cada elemento
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_hospital',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
-        'PORT': '5432'  # Cambia 'DATABASE_PORT' a 'PORT'
+        'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
