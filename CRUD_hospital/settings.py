@@ -106,7 +106,7 @@ DATABASES = {
         'NAME': 'db_hospital',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'HOST': 'local2',
         'PORT': '3306',
     }
 }
