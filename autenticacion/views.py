@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 
-# Importamos el formulario de autenticación
+
 #AuthenticationForm es una clase proporcionada por Django que se utiliza para crear un formulario de inicio de sesión en una aplicación web.
 # AuthenticationFormはDjangoのクラスです、ログインフォームを作るために使います"
 from django.contrib.auth.forms import  AuthenticationForm
