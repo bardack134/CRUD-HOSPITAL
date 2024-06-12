@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 
 # Importamos el formulario de autenticación
 #AuthenticationForm es una clase proporcionada por Django que se utiliza para crear un formulario de inicio de sesión en una aplicación web.
+# AuthenticationFormはDjangoのクラスです、ログインフォームを作るために使います"
 from django.contrib.auth.forms import  AuthenticationForm
 
 from django.views.generic import View
@@ -10,8 +11,9 @@ from django.contrib.auth import login, logout, authenticate
 
 
 # Importamos el módulo para manejar mensajes<
+# メッセージを処理するためのモジュール
 from django.contrib import messages
-# Create your views here.
+
 
 def cerrar_sesion(request):
     # Utilizamos la función logout() para cerrar la sesión del usuario.
