@@ -23,57 +23,69 @@ from django.utils.decorators import method_decorator
 
 
 # Creamos una vista basada en clase (VBC) llamada RegisterView que hereda de View.
+#このクラスは、Viewクラスを使って作られています。
 @method_decorator(login_required, name='dispatch')
 class RegisterPatient(View):
 
     # Método GET para mostrar o crear el formulario de registro.
+    # このメソッドはフォームを表示するためです。
     def get(self, request):
 
         # Creamos una instancia del formulario personalizado.
+        # フォームのインスタンスを作成します。
         form = PatientInformationForm()  
 
         # Preparamos los datos del formulario para pasar al contexto.
+    　　# フォームをコンテキストに渡します
         context = {
             'form': form 
         }
 
         # Mostramos la página de registro con el formulario.
+　　　　# フォームと共に登録ページを表示します。
         return render(request, 'registro/register.html', context) 
 
 
     # Método POST para procesar los datos del formulario cuando se envía.
+    # フォームデータが送信されたときに処理するためのPOSTメソッド。
     def post(self, request):
         
 
         # Creamos una instancia del formulario con los datos del POST.
+        # POSTデータを使用してフォームのインスタンスを作成します。
         form = PatientInformationForm(request.POST)  
 
         # Verificamos si los datos ingresados en el formulario son válidos.
+        # 入力されたデータが正しいかどうかをチェックします。
         if form.is_valid():
 
           
             """
             #para que el usuario logee automaticamente
+            #ユーザーを自動的にログインさせるためのコード
             usuario=form.save()
             login(request, usuario)
             """
-            # Guarda el formulario en la base de datos
+            #  フォームデータをデータベースに保存します
             patient = form.save()  # Esto guarda los datos en la base de datos y devuelve el objeto creado
 
 
-            # Mostramos un mensaje de éxito.
+            # 成功メッセージを表示します。
             messages.success(request, 'Patient registered successfully.')  
 
              # Redirige a la misma vista de registro
+             同じ登録ページにリダイレクトします
             return redirect('RegisterPatient')
  
 
         context = {
             # Preparamos los datos del formulario (incluso si no es válido) para pasar al contexto.
+             # フォームのデータ をコンテキストに渡す準備をします。
             'form': form  
         }
 
         #Mostramos la página de registro con el formulario y posibles errores.
+        # フォームと共に登録ページを表示します
         return render(request, 'registro/register.html', context)  
 
 
