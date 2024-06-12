@@ -24,7 +24,7 @@ from django.utils.decorators import method_decorator
 
 # Creamos una vista basada en clase (VBC) llamada RegisterView que hereda de View.
 #このクラスは、Viewクラスを使って作られています。
-@method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch') #ユーザーがログインしているかどうかを確認するためのもので
 class RegisterPatient(View):
 
     # Método GET para mostrar o crear el formulario de registro.
