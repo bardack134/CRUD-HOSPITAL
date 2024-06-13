@@ -30,7 +30,7 @@ def cerrar_sesion(request):
 def log(request):
 
     # Creamos una instancia del formulario de autenticación
-    認証フォームのインスタンスを作成します
+    ログインフォームのインスタンスを作成します
     form = AuthenticationForm()  
     
     context = {
@@ -56,7 +56,7 @@ class LoginView(View):
     #AuthenticationForm es una clase proporcionada por Django que se utiliza para crear un formulario de inicio de sesión en una aplicación web.
 
         # Creamos una instancia del formulario de inicio de session
-        # 認証フォームのインスタンスを作成します
+        # ログインフォームのインスタンスを作成します
         form = AuthenticationForm() 
 
         # Preparamos el contexto con el formulario
