@@ -17,37 +17,46 @@ from django.contrib import messages
 
 def cerrar_sesion(request):
     # Utilizamos la función logout() para cerrar la sesión del usuario.
+    # logout()関数を使用してユーザーのセッションを終了します。
     logout(request)
 
-    # Redirigimos al usuario a la página de inicio ('home' es el nombre de la URL).
+    # Redirigimos al usuario a la página de inicio ('login' es el nombre de la URL).
+    # ユーザーをホームページにリダイレクトします。
     return redirect('login')
 
 
 #página de inicio de sesión
+# ログインページ
 def log(request):
 
     # Creamos una instancia del formulario de autenticación
+    認証フォームのインスタンスを作成します
     form = AuthenticationForm()  
     
     context = {
         # Agregamos el formulario al contexto para pasarlo a la plantilla
+         # フォームをコンテキストに追加してテンプレートに渡します
         'form': form  
     }
 
     
     # Renderizamos la plantilla "login.html" con el contexto proporcionado
+    #コンテキストを "login.html" テンプレートをレンダリングします
     return render(request, 'login/login.html', context)   
 
 
 # Creamos una vista basada en clase llamada LoginView, se usara para crear un formulario de login
+# ログインフォームを作るためのクラス
 class LoginView(View):  
 
     # Método GET para crear el formulario de inicio de sesión
+    # GETメソッドでログインフォームを作成します
     def get(self, request):  
         
     #AuthenticationForm es una clase proporcionada por Django que se utiliza para crear un formulario de inicio de sesión en una aplicación web.
 
         # Creamos una instancia del formulario de inicio de session
+        # 認証フォームのインスタンスを作成します
         form = AuthenticationForm() 
 
         # Preparamos el contexto con el formulario
