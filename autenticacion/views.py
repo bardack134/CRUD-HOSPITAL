@@ -60,37 +60,44 @@ class LoginView(View):
         form = AuthenticationForm() 
 
         # Preparamos el contexto con el formulario
+        # フォームをコンテキストに追加してテンプレートに渡します
         context = {'form': form}  
 
         # Renderizamos la plantilla con el contexto
+        #コンテキストを "login.html" テンプレートをレンダリングします
         return render(request, 'login/login.html', context)  
 
     # Método POST para procesar los datos del formulario
-    def post(self, request):  
+    def post(self, request):  # POSTメソッドでフォームデータを処理します
 
         # Creamos una instancia del formulario de inicio de session pero con los datos POST
+         # データを持つ認証フォームのインスタンスを作成します
         form = AuthenticationForm(request, data=request.POST)  
 
         # Verificamos si el formulario es válido
+        # フォームが正しいか確認します
         if form.is_valid():  
-
-            
-
+          
             # En Django, después de que los datos ingresados por el usuario se someten al proceso de validación, se almacenan en el atributo cleaned_data, cleaned_data es un diccionario y usamos el metodo get() para obtener el valor del campo username
+            # ユーザーが入力したデータが確認された後、cleaned_dataに保存されます。cleaned_dataは辞書なので、get()メソッドでusernameフィールドの値を取得します。
             nombre_usuario = form.cleaned_data.get("username")  
 
             # Obtenemos la contraseña del formulario
+            # usernameように、フォームからパスワードを取得します
             contra = form.cleaned_data.get("password") 
 
             # Autenticamos al usuario
 
             #authenticate() verifica si las credenciales proporcionadas son válidas y corresponden a un usuario en la base de datos. Si las credenciales son válidas, devuelve un objeto de usuario. Si no son válidas, devuelve None.
+            # ユーザーを認証します。authenticate()は、入力された情報が正しいかどうかを確認し、正しければユーザーオブジェクトを返し、間違っていればNoneを返します。
             usuario = authenticate(username=nombre_usuario, password=contra) 
 
             # Si la autenticación fue exitosa
+            # 認証が成功した場合
             if usuario is not None:  
 
                  # Iniciamos sesión para el usuario autenticado
+                # 認証ユーザーのセッションを開始します
                 login(request, usuario) 
 
                 
@@ -98,11 +105,14 @@ class LoginView(View):
 
             
             # Si la autenticación falló 
+             # 認証に失敗した場合
             else:  
 
                 # Mostramos un mensaje de error
+                # エラーメッセージを表示します
                 messages.error(request, "Usuario no válido")
 
+        #フォームが正しくない場合
         else:  # Si el formulario no es válido
             messages.error(request, "Información incorrecta")  # Mostramos un mensaje de error
 
