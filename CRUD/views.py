@@ -36,13 +36,13 @@ class RegisterPatient(View):
         form = PatientInformationForm()  
 
         # Preparamos los datos del formulario para pasar al contexto.
-    　　# フォームをコンテキストに渡します
+        # フォームをコンテキストに渡します
         context = {
             'form': form 
         }
 
         # Mostramos la página de registro con el formulario.
-　　　　# フォームと共に登録ページを表示します。
+        # フォームと共に登録ページを表示します。
         return render(request, 'registro/register.html', context) 
 
 
@@ -74,7 +74,7 @@ class RegisterPatient(View):
             messages.success(request, 'Patient registered successfully.')  
 
              # Redirige a la misma vista de registro
-             同じ登録ページにリダイレクトします
+            #  同じ登録ページにリダイレクトします
             return redirect('RegisterPatient')
  
 
