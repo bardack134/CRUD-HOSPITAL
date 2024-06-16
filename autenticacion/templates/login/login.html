@@ -9,13 +9,35 @@
 {% load crispy_forms_tags %}
 
 <!-- Estos bloques delimitan el contenido específico de esta plantilla que será renderizado dentro del bloque content de la plantilla base. -->
+ 
+
+
+    
 {% block content %}
+
+    <!-- Itera a través de los mensajes almacenados en "messages" y muestra alertas -->
+    <!-- "messages" に保存されたメッセージを繰り返し処理し、アラートを表示します -->
+    {% for message in messages %}
+    <div class="container">
+
+      <div class="alert alert-{{ message.tags }} alert-dismissible text-white">
+        {{ message }}
+      <!-- Botón para cerrar la alerta -->
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+    {% endfor %}
+
+
 <div class="fondo">
 <div class="container  d-flex align-items-center justify-content-center min-vh-100">
   <div class="card bg-light" style="width: 25rem;">
     <div class="card-body p-3 mx-3">
 
       <!-- Creamos un formulario de inicio de sesión -->
+      <!-- ログインフォームを作成しました -->
       <form method="post" style="color: rgb(0, 0, 0);">
 
         <!-- Agregamos el token CSRF para protección contra ataques CSRF -->
@@ -24,6 +46,7 @@
         <div style="width: 100%; margin:auto;">
 
           <!-- Usamos Crispy Forms para dar estilo al formulario -->
+           <!-- フォームのスタイリングにCrispy Formsを使用しています -->
           {{ form|crispy }}
 
           <!-- Agregamos un botón para enviar el formulario -->

@@ -30,7 +30,7 @@ def cerrar_sesion(request):
 def log(request):
 
     # Creamos una instancia del formulario de autenticación
-    ログインフォームのインスタンスを作成します
+    # ログインフォームのインスタンスを作成します
     form = AuthenticationForm()  
     
     context = {
@@ -111,15 +111,23 @@ class LoginView(View):
                 # Mostramos un mensaje de error
                 # エラーメッセージを表示します
                 messages.error(request, "Usuario no válido")
-
+                # return render(request, 'login/login.html') 
+                
+                return redirect('login')
+             
         #フォームが正しくない場合
         else:  # Si el formulario no es válido
-            messages.error(request, "Información incorrecta")  # Mostramos un mensaje de error
+            messages.error(request, "You have entered an invalid username")  # Mostramos un mensaje de error
+            
+            return redirect('login')
+        # #todo lo anterior ocurre si el usario hace el proceso de logear, si no hace le proceso de logear salta directamente a estas dos ultimas lineas
 
-        #todo lo anterior ocurre si el usario hace el proceso de logear, si no hace le proceso de logear salta directamente a estas dos ultimas lineas
+        # # Preparamos el contexto con el formulario (posiblemente con errores)
+        # context = {'form': form}  
 
-        # Preparamos el contexto con el formulario (posiblemente con errores)
-        context = {'form': form}  
-
-        # Renderizamos la plantilla con el contexto
-        return render(request, 'login/login.html', context)  
+        # # Renderizamos la plantilla con el contexto
+        # return render(request, 'login/login.html', context)  
+        
+        
+        #TODO:REVISAR, ENTENDER, ESCR5IBIR COMENTARIOS EN  LA APP PATIENTES
+        #TODO: REVISAQR LOS COMENTARIOS ECRITOS EN MODLS.PY Y FORMS.PY DE LA APP CRUD

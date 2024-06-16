@@ -20,7 +20,7 @@ from django.views.generic import TemplateView
 
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
+from django.contrib.auth import login
 
 # Creamos una vista basada en clase (VBC) llamada RegisterView que hereda de View.
 #このクラスは、Viewクラスを使って作られています。
@@ -60,12 +60,12 @@ class RegisterPatient(View):
         if form.is_valid():
 
           
-            """
-            #para que el usuario logee automaticamente
-            #ユーザーを自動的にログインさせるためのコード
-            usuario=form.save()
-            login(request, usuario)
-            """
+            
+            # # para que el usuario logee automaticamente
+            # # ユーザーを自動的にログインさせるためのコード
+            # usuario=form.save()
+            # login(request, usuario)
+            
             #  フォームデータをデータベースに保存します
             patient = form.save()  # Esto guarda los datos en la base de datos y devuelve el objeto creado
 
@@ -131,7 +131,7 @@ class RegisterPatientSP(View):
             # Mostramos un mensaje de éxito.
             messages.success(request, 'Paciente registrado exitosamente.')  
 
-             # Redirige a la misma vista de registro
+            # Redirige a la misma vista de registro
             return redirect('RegistroPaciente')  
 
         context = {
