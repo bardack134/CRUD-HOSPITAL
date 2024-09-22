@@ -26,9 +26,9 @@
 
   <div class="p-1 " style="color: rgb(255, 254, 254); text-align: right; margin-right: 100px;">
     {% if user.is_authenticated %}
-    <span >Welcome <br><span style="color: yellow;">{{ user.username}} <br> </span>
+    <span >Welcome <br><span style="color: black;">{{ user.username}} <br> </span>
      
-    <a href="{% url 'cerrar_sesion' %}" style="color: rgb(240, 239, 239);">Logout</a>
+    <a href="{% url 'cerrar_sesion' %}" style="color: red;">Logout</a>
     {% else %}
     <!-- Mostrar enlaces de inicio de sesión y registro si el usuario no está autenticado -->
     <a href="{% url 'login' %}" style="color: rgb(255, 255, 255);">Login</a> <br>
