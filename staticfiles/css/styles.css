@@ -1,0 +1,28 @@
+/* styles.css */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color:#FAF7F0;
+  }
+  
+  .fondo {
+    background-image: url(../img/hospital.jpg);
+    height: 100vh; 
+    margin: 0; 
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .fondo2 {
+    /* background-image: url(../img/hospital2.webp); */
+    background-color: #FAF7F0;
+    margin: 0; /* Añade margen cero */
+    padding: 0; /* Añade relleno cero */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  /* Ajuste de estilos del formulario */
