@@ -1,4 +1,4 @@
-#!C:\Users\user\Documents\python\python\Programas creados.py\CRUD for hospital\venv\Scripts\python.exe
+#!R:\programacion\python\python\Programas creados.py\Repositorios\CRUD-HOSPITAL\venv\Scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
